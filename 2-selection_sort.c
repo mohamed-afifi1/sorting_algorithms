@@ -9,10 +9,6 @@
 */
 void selection_sort(int *array, size_t size)
 {
-	if (array == NULL)
-		return;
-	if (size == 0)
-		return;
 	size_t i, j, min;
 	int temp;
 
