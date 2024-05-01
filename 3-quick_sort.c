@@ -10,7 +10,7 @@
 */
 void quick_sort(int *array, size_t size)
 {
-	_qsort(array, 0, size - 1);
+	_qsort(array, 0, size - 1, size);
 }
 
 /**
@@ -20,7 +20,7 @@ void quick_sort(int *array, size_t size)
 * @high: the highest element
 * @size: the number of elements
 */
-void _qsort(int *a, int low, int high)
+void _qsort(int *a, int low, int high, int size)
 {
 	int pivot, ptr, i;
 	int tmp;
@@ -38,7 +38,7 @@ void _qsort(int *a, int low, int high)
 					tmp = a[i];
 					a[i] = a[ptr];
 					a[ptr] = tmp;
-					print_array(a, high + 1);
+					print_array(a, size);
 				}
 				ptr++;
 			}
@@ -48,9 +48,9 @@ void _qsort(int *a, int low, int high)
 			tmp = a[ptr];
 			a[ptr] = a[pivot];
 			a[pivot] = tmp;
-			print_array(a, high + 1);
+			print_array(a, size);
 		}
-		_qsort(a, low, ptr - 1);
-		_qsort(a, ptr + 1, high);
+		_qsort(a, low, ptr - 1, size);
+		_qsort(a, ptr + 1, high, size);
 	}
 }
