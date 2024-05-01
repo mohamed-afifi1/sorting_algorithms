@@ -10,7 +10,7 @@
 */
 void quick_sort(int *array, size_t size)
 {
-	_qsort(array, 0, size - 1);
+	_qsort(array, 0, size - 1, size);
 }
 
 /**
@@ -18,38 +18,39 @@ void quick_sort(int *array, size_t size)
 * @a: array of integers
 * @low: the lowest element
 * @high: the highest element
+* @size: the number of elements
 */
-void _qsort(int *a, int low, int high)
+void _qsort(int *a, int low, int high, int size)
 {
-	int pivot, pointer, i;
+	int pivot, ptr, i;
 	int tmp;
 
 	if (low < high)
 	{
 		pivot = high;
-		pointer = low;
+		ptr = low;
 		for (i = low; i < high; i++)
 		{
 			if (a[i] < a[pivot])
 			{
-				if (i != pointer)
+				if (i != ptr)
 				{
 					tmp = a[i];
-					a[i] = a[pointer];
-					a[pointer] = tmp;
-					print_array(a, high + 1);
+					a[i] = a[ptr];
+					a[ptr] = tmp;
+					print_array(a, size);
 				}
-				pointer++;
+				ptr++;
 			}
 		}
-		if (pointer != pivot && a[pointer] != a[pivot])
+		if (ptr != pivot && a[ptr] != a[pivot])
 		{
-			tmp = a[pointer];
-			a[pointer] = a[pivot];
+			tmp = a[ptr];
+			a[ptr] = a[pivot];
 			a[pivot] = tmp;
-			print_array(a, high + 1);
+			print_array(a, size);
 		}
-		_qsort(a, low, pointer - 1);
-		_qsort(a, pointer + 1, high);
+		_qsort(a, low, ptr - 1, size);
+		_qsort(a, ptr + 1, high, size);
 	}
 }
