@@ -9,25 +9,25 @@
 */
 void selection_sort(int *array, size_t size)
 {
-	size_t i, j, min;
-	int temp;
+	size_t i, j, m;
+	int t;
 
 	for (i = 0; i < size - 1; i++)
 	{
-		min = i;
+		m = i;
 		for (j = i + 1; j < size; j++)
 		{
-			if (array[j] < array[min])
+			if (array[j] < array[m])
 			{
-				min = j;
+				m = j;
 			}
 
 		}
-		if (i != min)
+		if (i != m)
 		{
-			temp = array[i];
-			array[i] = array[min];
-			array[min] = temp;
+			t = array[i];
+			array[i] = array[m];
+			array[m] = t;
 			print_array(array, size);
 		}
 }
